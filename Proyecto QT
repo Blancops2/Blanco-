@@ -1,0 +1,85 @@
+#include "mainwindow.h"
+#include "./ui_mainwindow.h"
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+
+{
+    ui->setupUi(this);
+    ui->Resultado->setText(" ");
+    ui->Resultado3_2->setText(" ");
+}
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+
+void MainWindow::on_Trasferencia_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(0);
+
+}
+
+void MainWindow::on_Depositar_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(3);
+}
+
+
+void MainWindow::on_Menu_clicked()
+{
+     ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+void MainWindow::on_Menu1_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+
+void MainWindow::on_DDepositar_clicked()
+{
+    ui->Resultado3->setText(QString::number(ui->n3->value() + ui->n4->value()));
+    ui->Resultado3_2->setText(QString::number(ui->n3->value() + ui->n4->value()));
+}
+
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    ui->Resultado->setText(QString::number(ui->n1->value() - ui->n2->value()));
+    ui->Resultado3_2->setText(QString::number(ui->n1->value() - ui->n2->value()));
+}
+
+
+void MainWindow::on_pushButton_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+
+
+void MainWindow::on_Is_clicked()
+{
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+
+void MainWindow::on_Continuar_clicked()
+{
+    QString Usuario,Contraseña;
+    Usuario= ui->Caja1->text();
+    Contraseña= ui->Caja2->text();
+
+                 if(Usuario=="Blanco" && Contraseña=="Banco"){
+    ui->stackedWidget->setCurrentIndex(1);
+
+}else
+  {
+    ui->Error->setText("Error");
+  }
+}
